@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
     @photo_id = params["id"]
     @list_of_photos = Photo.all
     i = @list_of_photos.find(@photo_id)
-    i.caption = "tomato"
+    i.caption = params["the_caption"]
     i.save
 
     redirect_to("http://localhost:3000/photos/" + @photo_id.to_s)
