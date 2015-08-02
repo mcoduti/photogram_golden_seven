@@ -3,6 +3,24 @@ class PhotosController < ApplicationController
     @list_of_photos = Photo.all
   end
 
+  def update_photo
+    @photo_id = params["id"]
+    @list_of_photos = Photo.all
+    i = @list_of_photos.find(@photo_id)
+    i.caption = "tomato"
+    i.save
+
+    redirect_to("http://localhost:3000/photos/" + @photo_id.to_s)
+  end
+
+  def edit_form
+    @photo_id = params["id"]
+    @list_of_photos = Photo.all
+    @caption = @list_of_photos.find(@photo_id).caption
+    @source = @list_of_photos.find(@photo_id).source
+    @photo = @list_of_photos.find(@photo_id).source
+  end
+
   def show
     @photo_id = params["id"]
     @list_of_photos = Photo.all
